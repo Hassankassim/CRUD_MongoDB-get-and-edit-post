@@ -27,6 +27,7 @@ export default function AddTopic() {
       });
 
       if (res.ok) {
+        router.refresh();
         router.push("/");
       } else {
         throw new Error("Failed to create a topic");
@@ -37,29 +38,32 @@ export default function AddTopic() {
   };
 
   return (
+    <>
+    <div className="center"><h1>Save Your Details to the bucket</h1></div>
     <form onSubmit={handleSubmit} className="flex flex-col gap-3">
       <input
         onChange={(e) => setTitle(e.target.value)}
         value={title}
-        className="border border-slate-500 px-8 py-2"
+        className="border border-slate-500 px-7 py-2"
         type="text"
-        placeholder="Topic Title"
+        placeholder=" Your Name"
       />
 
       <input
-        onChange={(e) => setDescription(e.target.value)}
+        onChange={(e) => setDescription(e.target.value )}
         value={description}
         className="border border-slate-500 px-8 py-2"
         type="text"
-        placeholder="Topic Description"
+        placeholder="Your Phone Number"
       />
 
       <button
         type="submit"
         className="bg-green-600 font-bold text-white py-3 px-6 w-fit"
       >
-        Add Topic
+        Save 
       </button>
     </form>
+    </>
   );
 }
