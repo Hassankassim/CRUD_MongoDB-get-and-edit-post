@@ -1,21 +1,22 @@
-import Link from "next/link";
-import RemoveBtn from "./RemoveBtn";
-import { HiPencilAlt } from "react-icons/hi";
+import Link from 'next/link';
+import RemoveBtn from './RemoveBtn';
+import { HiPencilAlt } from 'react-icons/hi';
 
 const getTopics = async () => {
-  const apiUrl = process.env.API_URL;   
+  const apiUrl = process.env.API_URL || 'http://localhost:3000'; // Fallback to localhost if API_URL is not set
+
   try {
-    const res = await fetch("http://localhost:3000/api/topics", {
-      cache: "no-store",
+    const res = await fetch(`${apiUrl}/api/topics`, {
+      cache: 'no-store',
     });
 
     if (!res.ok) {
-      throw new Error("Failed to fetch topics");
+      throw new Error('Failed to fetch topics');
     }
 
     return res.json();
   } catch (error) {
-    console.log("Error loading topics: ", error);
+    console.log('Error loading topics: ', error);
     return { topics: [] }; // Return an empty array in case of error
   }
 };
@@ -35,7 +36,6 @@ export default async function TopicsList() {
               <h2 className="font-bold text-2xl">{t.title}</h2>
               <div>{t.description}</div>
             </div>
-
             <div className="flex gap-2">
               <RemoveBtn id={t._id} />
               <Link href={`/editTopic/${t._id}`}>
@@ -47,8 +47,7 @@ export default async function TopicsList() {
       </>
     );
   } catch (error) {
-    // Handle error here
-    console.error("Error in TopicsList:", error);
+    console.error('Error in TopicsList:', error);
     return <div>Error loading topics. Please try again later.</div>;
   }
 }
