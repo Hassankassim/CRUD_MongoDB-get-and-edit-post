@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node your_start_file.js"
+    
   },
   "dependencies": {
     "autoprefixer": "10.4.14",
