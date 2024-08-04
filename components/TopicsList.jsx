@@ -2,6 +2,9 @@ import Link from 'next/link';
 import RemoveBtn from './RemoveBtn';
 import { HiPencilAlt } from 'react-icons/hi';
 
+
+
+
 const getTopics = async () => {
   const apiUrl = process.env.API_URL || 'http://localhost:3000'; // Fallback to localhost if API_URL is not set
 
@@ -27,6 +30,7 @@ export default async function TopicsList() {
 
     return (
       <>
+   
         {topics.map((t) => (
           <div
             key={t._id}

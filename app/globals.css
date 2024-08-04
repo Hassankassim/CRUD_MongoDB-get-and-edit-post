@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
 .unique-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 12rem;
+    width: 10rem;
     overflow: hidden;
-    height: 4rem;
+    height: 2.5rem;
     background-size: 300% 300%;
     backdrop-filter: blur(1rem);
     border-radius: 1rem;
